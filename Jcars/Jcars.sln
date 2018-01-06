@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jcars", "Jcars\Jcars.csproj", "{ABC80107-BD03-494C-B64F-057FF1060D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jcars.Business", "Jcars.Business\Jcars.Business.csproj", "{2824A3CE-8D4D-4A26-866C-6568E4D695A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABC80107-BD03-494C-B64F-057FF1060D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC80107-BD03-494C-B64F-057FF1060D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC80107-BD03-494C-B64F-057FF1060D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC80107-BD03-494C-B64F-057FF1060D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2824A3CE-8D4D-4A26-866C-6568E4D695A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2824A3CE-8D4D-4A26-866C-6568E4D695A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2824A3CE-8D4D-4A26-866C-6568E4D695A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2824A3CE-8D4D-4A26-866C-6568E4D695A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
