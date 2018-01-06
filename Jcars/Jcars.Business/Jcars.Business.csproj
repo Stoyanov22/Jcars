@@ -68,7 +68,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\Car.cs" />
+    <Compile Include="Entities\Engine.cs" />
+    <Compile Include="Entities\File.cs" />
     <Compile Include="Entities\JcarsDbContext.cs" />
+    <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Transmission.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
