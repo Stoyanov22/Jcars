@@ -1,0 +1,27 @@
+﻿<h2>LogIn</h2>
+
+@Html.ValidationSummary(true)
+
+<form action="/auth/login" method="post">
+    <div class="editor-label">
+        <label for="Email">Email</label>
+    </div>
+    <div class="editor-field">
+        <input class="text-box single-line" data-val="true" data-val-required="The Email field is required." id="Email" name="Email" type="email" value="" /> 
+        <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+    </div>
+    <div class="editor-label">
+        <label for="Password">Password</label>
+    </div>
+    <div class="editor-field">
+        <input class="text-box single-line password" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" value="" /> 
+        <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+       </div>
+    <br />
+    <div class="editor-field" type="hidden">
+        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="" /> 
+    </div>
+    <p>
+        <button type="submit">Log In</button>
+    </p>
+</form>
