@@ -1,0 +1,117 @@
+﻿
+@model Jcars.Models.CreateCarViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "Car", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Add a car</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Brand</label>
+                    @Html.DropDownList("BrandID", Model.Brands.Select(i => new SelectListItem()
+               {
+                   Text = i.Name,
+                   Value = i.BrandID.ToString()
+               }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Model</label>
+                    @Html.DropDownList("ModelID", Model.Models.Select(i => new SelectListItem()
+               {
+                   Text = i.Name,
+                   Value = i.ModelID.ToString()
+               }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Engine</label>
+                    @Html.DropDownList("ModelID", Model.Engines.Select(i => new SelectListItem()
+               {
+                   Text = i.Type,
+                   Value = i.EngineID.ToString()
+               }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Transmission</label>
+                    @Html.DropDownList("ModelID", Model.Transmissions.Select(i => new SelectListItem()
+               {
+                   Text = i.Type,
+                   Value = i.TransmissionID.ToString()
+               }))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Price</label>
+                    <br />
+                    <input type="text" placeholder="Enter price" name="price" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Year</label>
+                    <br />
+                    <input type="text" placeholder="Enter Year" name="year" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Horsepower</label>
+                    <br />
+                    <input type="text" placeholder="Enter horsepower" name="horsepower" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label>Mileage</label>
+                    <br />
+                    <input type="text" placeholder="Enter mileage" name="mileage" />
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <div class="col-md-10">
+                    <label>Photo</label>
+                    <br />
+                    <input type="file" name="photo" />
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "linktext" })
+    </div>
+</body>
+</html>
+

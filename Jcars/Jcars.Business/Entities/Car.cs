@@ -10,6 +10,7 @@ namespace Jcars.Business.Entities
     {
         public int CarID { get; set; }
         public int BrandID { get; set; }
+        public int ModelID { get; set; }
         public int Price { get; set; }
         public int Year { get; set; }
         public int Horsepower { get; set; }
@@ -25,6 +26,7 @@ namespace Jcars.Business.Entities
         public string UserName { get; set; }
         public virtual IEnumerable<File> Files { get; set; }
         public virtual Brand Brand {get; set;}
+        //public virtual Model Model {get; set;}
         public virtual Engine Engine { get; set; }
         public virtual Transmission Transmission { get; set; }
         public virtual User User{ get; set; }
