@@ -45,7 +45,7 @@ namespace Jcars.Controllers
                 return View();
             }
 
-            var user = await userManager.FindAsync(model.Email, model.Password);
+            var user = await userManager.FindAsync(model.Username, model.Password);
 
             if (user != null)
             {
@@ -59,7 +59,7 @@ namespace Jcars.Controllers
             }
 
             // user authN failed
-            ModelState.AddModelError("", "Invalid email or password");
+            ModelState.AddModelError("", "Invalid username or password");
             return View();
         }
 
@@ -97,7 +97,7 @@ namespace Jcars.Controllers
 
             var user = new User
             {
-                UserName = model.Email,
+                UserName = model.Username,
             };
 
             var result = await userManager.CreateAsync(user, model.Password);

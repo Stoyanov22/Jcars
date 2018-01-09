@@ -9,8 +9,8 @@ namespace Jcars.Models
     public class RegisterModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        [DataType(DataType.Text)]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

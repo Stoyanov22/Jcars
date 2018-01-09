@@ -9,6 +9,6 @@ namespace Jcars.Business.Entities
 {
     public class User : IdentityUser
     {
-
+        public virtual IEnumerable<Car> Cars { get; set; }
     }
 }
