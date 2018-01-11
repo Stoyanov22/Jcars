@@ -23,7 +23,7 @@ namespace Jcars.Business.Entities
         public bool ESP { get; set; }
         public bool Airbag { get; set; }
         public bool TractionControl { get; set; }
-        public string UserName { get; set; }
+        public string UserID { get; set; }
         public virtual IEnumerable<File> Files { get; set; }
         public virtual Brand Brand {get; set;}
         //public virtual Model Model {get; set;}

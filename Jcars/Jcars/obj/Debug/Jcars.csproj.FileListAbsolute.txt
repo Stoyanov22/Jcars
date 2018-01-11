@@ -173,3 +173,9 @@ D:\projects\C#\Jcars\Jcars\Jcars\obj\Debug\Jcars.csprojResolveAssemblyReference.
 D:\projects\C#\Jcars\Jcars\Jcars\obj\Debug\Jcars.csproj.CoreCompileInputs.cache
 D:\projects\C#\Jcars\Jcars\Jcars\obj\Debug\Jcars.dll
 D:\projects\C#\Jcars\Jcars\Jcars\obj\Debug\Jcars.pdb
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.xml
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.xml
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.Mvc.xml

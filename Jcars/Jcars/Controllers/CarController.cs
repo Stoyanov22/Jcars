@@ -14,14 +14,9 @@ namespace Jcars.Controllers
 {
     public class CarController : Controller
     {
-        static JcarsDbContext db = new JcarsDbContext();
-        CarService carService = new CarService(db);
+        ICarService carService;
 
-        public CarController()
-        {
-
-        }
-        public CarController(CarService carService)
+        public CarController(ICarService carService)
         {
             this.carService = carService;
         }
@@ -52,7 +47,7 @@ namespace Jcars.Controllers
             {
                 var car = new Car
                 {
-                    UserName = User.Identity.GetUserId(),
+                    UserID = User.Identity.GetUserId(),
                     BrandID = createCarModel.BrandID,
                     ModelID = createCarModel.ModelID,
                     Price = createCarModel.Price,

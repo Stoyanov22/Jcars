@@ -45,3 +45,16 @@ D:\projects\C#\Jcars\Jcars\Jcars.Business\obj\Debug\Jcars.Business.csprojResolve
 D:\projects\C#\Jcars\Jcars\Jcars.Business\obj\Debug\Jcars.Business.csproj.CoreCompileInputs.cache
 D:\projects\C#\Jcars\Jcars\Jcars.Business\obj\Debug\Jcars.Business.dll
 D:\projects\C#\Jcars\Jcars\Jcars.Business\obj\Debug\Jcars.Business.pdb
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Helpers.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Mvc.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Razor.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.xml
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.xml
+C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml

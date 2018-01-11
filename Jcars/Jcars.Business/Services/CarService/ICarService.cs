@@ -11,5 +11,9 @@ namespace Jcars.Business.Services.CarService
     {
         Task<IEnumerable<Car>> GetPaginatedCarsAsync(int pageNumber, int pageSize);
         Task CreateCarAsync(Car car);
+        Task<IEnumerable<Brand>> GetAllBrandsAsync();
+        Task<IEnumerable<Model>> GetAllModelsAsync();
+        Task<IEnumerable<Engine>> GetAllEnginesAsync();
+        Task<IEnumerable<Transmission>> GetAllTransmissionsAsync();
     }
 }

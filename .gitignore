@@ -2,3 +2,7 @@ Web.config
 /Jcars/.vs/Jcars/v15/Server/sqlite3/db.lock
 Jcars/.vs/config/applicationhost.config
 Jcars/.vs/Jcars/v15/.suo
+Jcars/.vs/Jcars/v15/.suo
+Jcars/.vs/config/applicationhost.config
+*.cache
+*.cache

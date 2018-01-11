@@ -17,10 +17,6 @@ namespace Jcars.Controllers
     {
         private readonly UserManager<User> userManager;
 
-        public AuthController() : this(Startup.UserManagerFactory.Invoke())
-        {
-        }
-
         public AuthController(UserManager<User> userManager)
         {
             this.userManager = userManager;
