@@ -229,6 +229,7 @@
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\MyCars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

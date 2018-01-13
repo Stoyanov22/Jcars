@@ -26,6 +26,7 @@ namespace Jcars.Controllers
             return View();
         }
 
+        [HttpGet]
         [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult> Create()
         {
@@ -64,6 +65,14 @@ namespace Jcars.Controllers
             return RedirectToAction("Index");
 
             //return View(movie);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> MyCars()
+        {
+            var result = await carService.GetMyCarsAsync();
+            return View(result);
         }
     }
 }

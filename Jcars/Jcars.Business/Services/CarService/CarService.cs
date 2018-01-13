@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Jcars.Business.Entities;
 using System.Data.Entity;
+using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace Jcars.Business.Services.CarService
 {
@@ -51,6 +53,15 @@ namespace Jcars.Business.Services.CarService
         public async Task<IEnumerable<Model>> GetAllModelsAsync()
         {
             var result = await Context.Models.ToListAsync();
+            return result;
+        }
+
+        public async Task<IEnumerable<Car>> GetMyCarsAsync()
+        {
+            var user = HttpContext.Current.User;
+            var userID = user.Identity.GetUserId();
+            var result = await Context.Cars.Include("Files").Include("Brand").Include("Model")
+    .Include("Engine").Include("Transmission").Where(c=>c.UserID == userID).ToListAsync();
             return result;
         }
     }

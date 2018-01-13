@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Jcars.Business.Entities.Car>
+
+<h2>My Cars</h2>
+
+<table>
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @foreach(var car in Model)
+    {
+        <tr>
+            <td>
+                No Image <!-- TO DO -->
+            </td>
+            <td>
+                @car.Brand.Name
+            </td>
+            <td>
+                @car.Model.Name
+            </td>
+            <td>
+                @car.Price
+            </td>
+            <td>
+                @car.Year
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Car") | @Html.ActionLink("Edit", "Edit", "Car") | @Html.ActionLink("Delete", "Delete", "Car")
+            </td>
+        </tr>
+    }
+</table>

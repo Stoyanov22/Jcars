@@ -24,9 +24,9 @@ namespace Jcars.Business.Entities
         public bool Airbag { get; set; }
         public bool TractionControl { get; set; }
         public string UserID { get; set; }
-        public virtual IEnumerable<File> Files { get; set; }
+        public virtual List<File> Files { get; set; }
         public virtual Brand Brand {get; set;}
-        //public virtual Model Model {get; set;}
+        public virtual Model Model {get; set;}
         public virtual Engine Engine { get; set; }
         public virtual Transmission Transmission { get; set; }
         public virtual User User{ get; set; }
