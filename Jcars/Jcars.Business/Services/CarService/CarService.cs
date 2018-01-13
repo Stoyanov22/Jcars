@@ -64,5 +64,12 @@ namespace Jcars.Business.Services.CarService
     .Include("Engine").Include("Transmission").Where(c=>c.UserID == userID).ToListAsync();
             return result;
         }
+
+        public async Task<Car> GetCarAsync(int id)
+        {
+            var result = await Context.Cars.Include("Files").Include("Brand").Include("Model")
+    .Include("Engine").Include("Transmission").Where(c=>c.CarID==id).SingleOrDefaultAsync();
+            return result;
+        }
     }
 }

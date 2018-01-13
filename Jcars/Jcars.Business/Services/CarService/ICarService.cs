@@ -16,5 +16,6 @@ namespace Jcars.Business.Services.CarService
         Task<IEnumerable<Model>> GetAllModelsAsync();
         Task<IEnumerable<Engine>> GetAllEnginesAsync();
         Task<IEnumerable<Transmission>> GetAllTransmissionsAsync();
+        Task<Car> GetCarAsync(int id); 
     }
 }

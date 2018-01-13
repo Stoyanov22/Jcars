@@ -74,5 +74,15 @@ namespace Jcars.Controllers
             var result = await carService.GetMyCarsAsync();
             return View(result);
         }
+
+        // GET: CarDetails
+        [HttpGet]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> Details(int id)
+        {
+            var result = await carService.GetCarAsync(id);
+            return View(result);
+        }
+
     }
 }

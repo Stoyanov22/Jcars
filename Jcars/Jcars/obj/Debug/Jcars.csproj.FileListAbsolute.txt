@@ -179,3 +179,9 @@ C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjecto
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.xml
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.xml
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.Mvc.xml
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.dll
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.dll
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.Mvc.dll
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.xml
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.xml
+D:\projects\C#\Jcars\Jcars\Jcars\bin\SimpleInjector.Integration.Web.Mvc.xml

@@ -58,3 +58,16 @@ C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debu
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.xml
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.xml
 C:\Users\Stoyanov22\Documents\Programming\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Helpers.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Mvc.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.Razor.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\System.Web.WebPages.Razor.dll
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.xml
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.xml
+D:\projects\C#\Jcars\Jcars\Jcars.Business\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
