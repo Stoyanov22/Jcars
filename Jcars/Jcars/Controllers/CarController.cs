@@ -92,7 +92,7 @@ namespace Jcars.Controllers
 
             if (car.UserID != User.Identity.GetUserId())
             {
-                return RedirectToAction("MyCars");
+                return RedirectToAction("MyCars");//error
             }
 
             var engines = await carService.GetAllEnginesAsync();
@@ -133,6 +133,19 @@ namespace Jcars.Controllers
                 return RedirectToAction("Details", "Car", new { id = editCarModel.CarID });
             }
             return RedirectToAction("Details", new { id = editCarModel.CarID });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, User")]
+        public async Task Delete(int id)
+        {
+            var car = await carService.GetCarAsync(id);
+            if (car.UserID!=User.Identity.GetUserId())
+            {
+                RedirectToAction("MyCars");//Error
+            }
+
+            await carService.DeleteCarAsync(id);
         }
 
     }

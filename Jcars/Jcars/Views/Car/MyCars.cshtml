@@ -42,8 +42,9 @@
                 @car.Year
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Car", new { id = car.CarID}, null ) | @Html.ActionLink("Edit", "Edit", "Car", new { id = car.CarID }, null) | @Html.ActionLink("Delete", "Delete", "Car")
+                @Html.ActionLink("Details", "Details", "Car", new { id = car.CarID}, null ) | @Html.ActionLink("Edit", "Edit", "Car", new { id = car.CarID }, null) | <button value="@car.CarID" class="deleteButton">Delete</button>
             </td>
         </tr>
     }
 </table>
+<script type="text/javascript" src="~/Scripts/deleteCar.js"></script>

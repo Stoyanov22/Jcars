@@ -91,5 +91,12 @@ namespace Jcars.Business.Services.CarService
             currentCar.Year = car.Year;
             await Context.SaveChangesAsync();
         }
+
+        public async Task DeleteCarAsync(int id)
+        {
+            var car = await Context.Cars.Where(c => c.CarID == id).Include("Files").SingleOrDefaultAsync();
+            Context.Cars.Remove(car);
+            await Context.SaveChangesAsync();
+        }
     }
 }

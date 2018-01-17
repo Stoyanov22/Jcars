@@ -18,5 +18,6 @@ namespace Jcars.Business.Services.CarService
         Task<IEnumerable<Transmission>> GetAllTransmissionsAsync();
         Task<Car> GetCarAsync(int id);
         Task EditCarAsync(Car car);
+        Task DeleteCarAsync(int id);
     }
 }
