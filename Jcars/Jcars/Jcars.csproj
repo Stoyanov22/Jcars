@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Models\CreateCarModel.cs" />
     <Compile Include="Models\CreateCarViewModel.cs" />
+    <Compile Include="Models\EditCarModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -232,6 +233,7 @@
     <Content Include="Views\Car\Index.cshtml" />
     <Content Include="Views\Car\MyCars.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

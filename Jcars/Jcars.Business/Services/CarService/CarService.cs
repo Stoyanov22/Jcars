@@ -71,5 +71,25 @@ namespace Jcars.Business.Services.CarService
     .Include("Engine").Include("Transmission").Where(c=>c.CarID==id).SingleOrDefaultAsync();
             return result;
         }
+
+        public async Task EditCarAsync(Car car)
+        {
+            var currentCar = await Context.Cars.Where(c=>c.CarID == car.CarID).SingleOrDefaultAsync();
+            currentCar.ABS = car.ABS;
+            currentCar.Airbag = car.Airbag;
+            currentCar.AirConditioner = car.AirConditioner;
+            currentCar.BrandID = car.BrandID;
+            currentCar.EngineID = car.EngineID;
+            currentCar.ESP = car.ESP;
+            currentCar.GPS = car.GPS;
+            currentCar.Horsepower = car.Horsepower;
+            currentCar.Mileage = car.Mileage;
+            currentCar.ModelID = car.ModelID;
+            currentCar.Price = car.Price;
+            currentCar.TractionControl = car.TractionControl;
+            currentCar.TransmissionID = car.TransmissionID;
+            currentCar.Year = car.Year;
+            await Context.SaveChangesAsync();
+        }
     }
 }

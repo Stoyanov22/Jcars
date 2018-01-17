@@ -84,5 +84,56 @@ namespace Jcars.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var car = await carService.GetCarAsync(id);
+
+            if (car.UserID != User.Identity.GetUserId())
+            {
+                return RedirectToAction("MyCars");
+            }
+
+            var engines = await carService.GetAllEnginesAsync();
+            var transmissions = await carService.GetAllTransmissionsAsync();
+            var brands = await carService.GetAllBrandsAsync();
+            var models = await carService.GetAllModelsAsync();
+            var result = new EditCarModel(car, brands, models, engines, transmissions);
+            return View(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> Edit(EditCarModel editCarModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var newCar = new Car
+                {
+                    CarID = editCarModel.CarID,
+                    ABS = editCarModel.ABS,
+                    Airbag = editCarModel.Airbag,
+                    AirConditioner = editCarModel.AirConditioner,
+                    BrandID = editCarModel.BrandID,
+                    EngineID = editCarModel.EngineID,
+                    ESP = editCarModel.ESP,
+                    GPS = editCarModel.GPS,
+                    Horsepower = editCarModel.Horsepower,
+                    Mileage = editCarModel.Mileage,
+                    ModelID = editCarModel.ModelID,
+                    Price = editCarModel.Price,
+                    TractionControl = editCarModel.TractionControl,
+                    TransmissionID = editCarModel.TransmissionID,
+                    Year = editCarModel.Year,
+                };
+                await carService.EditCarAsync(newCar);
+
+                return RedirectToAction("Details", "Car", new { id = editCarModel.CarID });
+            }
+            return RedirectToAction("Details", new { id = editCarModel.CarID });
+        }
+
     }
 }

@@ -23,7 +23,7 @@
             Actions
         </th>
     </tr>
-    @foreach(var car in Model)
+    @foreach (var car in Model)
     {
         <tr>
             <td>
@@ -42,7 +42,7 @@
                 @car.Year
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Car") | @Html.ActionLink("Edit", "Edit", "Car") | @Html.ActionLink("Delete", "Delete", "Car")
+                @Html.ActionLink("Details", "Details", "Car", new { id = car.CarID}, null ) | @Html.ActionLink("Edit", "Edit", "Car", new { id = car.CarID }, null) | @Html.ActionLink("Delete", "Delete", "Car")
             </td>
         </tr>
     }
