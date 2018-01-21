@@ -1,21 +1,33 @@
 ﻿@model Jcars.Business.Entities.Car
 
 <h2>CarDetails</h2>
-@*<div>@Model.Files</div>*@
-<div>@Model.Brand.Name</div>
-<div>@Model.Model.Name</div>
-<div>@Model.Price</div>
-<div>@Model.Year</div>
-<div>@Model.Horsepower</div>
-<div>@Model.Engine.Type</div>
-<div>@Model.Transmission.Type</div>
-<div>@Model.Mileage</div>
-@*<div>AirConditioner</div>
-<div>GPS</div>
-<div>ABS</div>
-<div>ESP</div>
-<div>AirBag</div>
-<div>TractionControl</div>*@
+
+@if (Model.Files != null && Model.Files.Count > 0)
+{
+    for (int i = 0; i < Model.Files.Count; i++)
+    {
+
+        var base64 = Convert.ToBase64String(Model.Files[i].Content.ToArray());
+        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        <img src="@imgSrc" />
+    }
+}
+
+    @*<div>@Model.Files</div>*@
+    <div>@Model.Brand.Name</div>
+    <div>@Model.Model.Name</div>
+    <div>@Model.Price</div>
+    <div>@Model.Year</div>
+    <div>@Model.Horsepower</div>
+    <div>@Model.Engine.Type</div>
+    <div>@Model.Transmission.Type</div>
+    <div>@Model.Mileage</div>
+    @*<div>AirConditioner</div>
+        <div>GPS</div>
+        <div>ABS</div>
+        <div>ESP</div>
+        <div>AirBag</div>
+        <div>TractionControl</div>*@
 
 
 

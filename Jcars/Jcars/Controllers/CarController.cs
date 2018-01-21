@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -58,7 +59,25 @@ namespace Jcars.Controllers
                     TransmissionID = createCarModel.TransmissionID,
                     Mileage = createCarModel.Mileage
                 };
+
                 await carService.CreateCarAsync(car);
+
+                byte[] fileData = null;
+
+                for (int i = 1; i <= Request.Files.Count; i++)
+                {
+                    using (var binaryReader = new BinaryReader(Request.Files["photo" + i].InputStream))
+                    {
+                        if (Request.Files["photo" + i].ContentLength == 0)
+                        {
+                            continue;
+                        }
+
+                        fileData = binaryReader.ReadBytes(Request.Files["photo" + i].ContentLength);
+                    }
+
+                    await carService.CreateFilesAsync(new Business.Entities.File { Car = car, Content = fileData });
+                }
 
                 return RedirectToAction("Index", "Car");
             }
@@ -140,7 +159,7 @@ namespace Jcars.Controllers
         public async Task Delete(int id)
         {
             var car = await carService.GetCarAsync(id);
-            if (car.UserID!=User.Identity.GetUserId())
+            if (car.UserID != User.Identity.GetUserId())
             {
                 RedirectToAction("MyCars");//Error
             }

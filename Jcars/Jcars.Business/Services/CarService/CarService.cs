@@ -98,5 +98,11 @@ namespace Jcars.Business.Services.CarService
             Context.Cars.Remove(car);
             await Context.SaveChangesAsync();
         }
+
+        public async Task CreateFilesAsync(File file)
+        {
+            Context.Files.Add(file);
+            await Context.SaveChangesAsync();
+        }
     }
 }
