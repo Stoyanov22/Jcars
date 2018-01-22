@@ -161,7 +161,7 @@ namespace Jcars.Controllers
             var car = await carService.GetCarAsync(id);
             if (car.UserID != User.Identity.GetUserId())
             {
-                RedirectToAction("MyCars");//Error
+                RedirectToAction("MyCars");//On Error
             }
 
             await carService.DeleteCarAsync(id);
@@ -172,6 +172,10 @@ namespace Jcars.Controllers
         public async Task<ActionResult> Images(int id)
         {
             var car = await carService.GetCarAsync(id);
+            if (car.UserID != User.Identity.GetUserId())
+            {
+                RedirectToAction("MyCars");//On Error
+            }
             var files = car.Files;
             var result = new EditImagesModel(car.CarID, files);
             return View(result);
@@ -181,6 +185,11 @@ namespace Jcars.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult> UploadImage(int id)
         {
+            var car = await carService.GetCarAsync(id);
+            if (car.UserID != User.Identity.GetUserId())
+            {
+                RedirectToAction("MyCars");//On Error
+            }
             byte[] fileData = null;
             using (var binaryReader = new BinaryReader(Request.Files["photo"].InputStream))
             {
@@ -195,10 +204,21 @@ namespace Jcars.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin, User")]
-        public async Task DeleteImage(int id)
+        public async Task DeleteImage(int id,int carID)
         {
-            // PROVERKA
-            await carService.DeleteFileAsync(id);
+            var car = await carService.GetCarAsync(carID);
+            if (car.UserID != User.Identity.GetUserId())
+            {
+                RedirectToAction("MyCars");//On Error
+            }
+            else if(!car.Files.Select(f=>f.FileID).Contains(id))
+            {
+                RedirectToAction("MyCars");//On Error
+            }
+            else
+            {
+                await carService.DeleteFileAsync(id);
+            }
         }
     }
 }

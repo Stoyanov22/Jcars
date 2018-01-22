@@ -5,11 +5,12 @@
         }
 
         var fileID = $(this).attr("value");
+        var carID = $(this).attr("data-value");
         var parent = $(this).parent('div');
         $.ajax({
             type: "post",
             url: "/Car/DeleteImage",
-            data: { id: fileID },
+            data: { id: fileID, carID : carID },
             success: function () {
                 parent.fadeOut();
             },
