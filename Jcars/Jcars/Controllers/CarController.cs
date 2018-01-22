@@ -76,7 +76,7 @@ namespace Jcars.Controllers
                         fileData = binaryReader.ReadBytes(Request.Files["photo" + i].ContentLength);
                     }
 
-                    await carService.CreateFilesAsync(new Business.Entities.File { Car = car, Content = fileData });
+                    await carService.CreateFileAsync(new Business.Entities.File { Car = car, Content = fileData });
                 }
 
                 return RedirectToAction("Index", "Car");
@@ -167,5 +167,38 @@ namespace Jcars.Controllers
             await carService.DeleteCarAsync(id);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> Images(int id)
+        {
+            var car = await carService.GetCarAsync(id);
+            var files = car.Files;
+            var result = new EditImagesModel(car.CarID, files);
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<ActionResult> UploadImage(int id)
+        {
+            byte[] fileData = null;
+            using (var binaryReader = new BinaryReader(Request.Files["photo"].InputStream))
+            {
+                if (Request.Files["photo"].ContentLength != 0)
+                {
+                    fileData = binaryReader.ReadBytes(Request.Files["photo"].ContentLength);
+                    await carService.CreateFileAsync(new Business.Entities.File {CarID=id ,Content=fileData});
+                }                
+            }
+            return RedirectToAction("Images", new { id = id });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, User")]
+        public async Task DeleteImage(int id)
+        {
+            // PROVERKA
+            await carService.DeleteFileAsync(id);
+        }
     }
 }

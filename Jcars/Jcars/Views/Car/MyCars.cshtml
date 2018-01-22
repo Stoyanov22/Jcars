@@ -27,7 +27,19 @@
     {
         <tr>
             <td>
-                No Image <!-- TO DO -->
+                @{
+                    if (car.Files.Count > 0)
+                    {
+                        var base64 = Convert.ToBase64String(car.Files[0].Content.ToArray());
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                        <img width="140" src="@imgSrc" />
+                    }
+                    else
+                    {
+                        <p>No image</p>
+                    }
+                }
             </td>
             <td>
                 @car.Brand.Name
@@ -42,7 +54,7 @@
                 @car.Year
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Car", new { id = car.CarID}, null ) | @Html.ActionLink("Edit", "Edit", "Car", new { id = car.CarID }, null) | <button value="@car.CarID" class="deleteButton">Delete</button>
+                @Html.ActionLink("Details", "Details", "Car", new { id = car.CarID }, null) | @Html.ActionLink("Edit", "Edit", "Car", new { id = car.CarID }, null) | <button value="@car.CarID" class="deleteButton">Delete</button>
             </td>
         </tr>
     }

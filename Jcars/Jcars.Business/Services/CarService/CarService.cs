@@ -61,20 +61,20 @@ namespace Jcars.Business.Services.CarService
             var user = HttpContext.Current.User;
             var userID = user.Identity.GetUserId();
             var result = await Context.Cars.Include("Files").Include("Brand").Include("Model")
-    .Include("Engine").Include("Transmission").Where(c=>c.UserID == userID).ToListAsync();
+    .Include("Engine").Include("Transmission").Where(c => c.UserID == userID).ToListAsync();
             return result;
         }
 
         public async Task<Car> GetCarAsync(int id)
         {
             var result = await Context.Cars.Include("Files").Include("Brand").Include("Model")
-    .Include("Engine").Include("Transmission").Where(c=>c.CarID==id).SingleOrDefaultAsync();
+    .Include("Engine").Include("Transmission").Where(c => c.CarID == id).SingleOrDefaultAsync();
             return result;
         }
 
         public async Task EditCarAsync(Car car)
         {
-            var currentCar = await Context.Cars.Where(c=>c.CarID == car.CarID).SingleOrDefaultAsync();
+            var currentCar = await Context.Cars.Where(c => c.CarID == car.CarID).SingleOrDefaultAsync();
             currentCar.ABS = car.ABS;
             currentCar.Airbag = car.Airbag;
             currentCar.AirConditioner = car.AirConditioner;
@@ -99,10 +99,18 @@ namespace Jcars.Business.Services.CarService
             await Context.SaveChangesAsync();
         }
 
-        public async Task CreateFilesAsync(File file)
+        public async Task CreateFileAsync(File file)
         {
             Context.Files.Add(file);
             await Context.SaveChangesAsync();
+        }
+
+        public async Task DeleteFileAsync(int id)
+        {
+            var file = await Context.Files.Where(f => f.FileID == id).SingleOrDefaultAsync();
+            Context.Files.Remove(file);
+            await Context.SaveChangesAsync();
+
         }
     }
 }

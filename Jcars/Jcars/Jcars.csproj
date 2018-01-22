@@ -188,6 +188,7 @@
     <Compile Include="Models\CreateCarModel.cs" />
     <Compile Include="Models\CreateCarViewModel.cs" />
     <Compile Include="Models\EditCarModel.cs" />
+    <Compile Include="Models\EditImagesModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,6 +207,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\deleteCar.js" />
+    <Content Include="Scripts\deleteImage.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -235,6 +237,7 @@
     <Content Include="Views\Car\MyCars.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Images.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

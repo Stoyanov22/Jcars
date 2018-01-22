@@ -19,6 +19,7 @@ namespace Jcars.Business.Services.CarService
         Task<Car> GetCarAsync(int id);
         Task EditCarAsync(Car car);
         Task DeleteCarAsync(int id);
-        Task CreateFilesAsync(File file);
+        Task CreateFileAsync(File file);
+        Task DeleteFileAsync(int id);
     }
 }
