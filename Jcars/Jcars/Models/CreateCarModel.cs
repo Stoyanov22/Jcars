@@ -15,5 +15,11 @@ namespace Jcars.Models
         public int EngineID { get; set; }
         public int TransmissionID { get; set; }
         public int Mileage { get; set; }
+        public bool AirConditioner { get; set; }
+        public bool GPS { get; set; }
+        public bool ABS { get; set; }
+        public bool ESP { get; set; }
+        public bool Airbag { get; set; }
+        public bool TractionControl { get; set; }
     }
 }

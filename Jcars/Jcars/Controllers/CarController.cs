@@ -57,7 +57,13 @@ namespace Jcars.Controllers
                     Horsepower = createCarModel.Horsepower,
                     EngineID = createCarModel.EngineID,
                     TransmissionID = createCarModel.TransmissionID,
-                    Mileage = createCarModel.Mileage
+                    Mileage = createCarModel.Mileage,
+                    AirConditioner = createCarModel.AirConditioner,
+                    GPS = createCarModel.GPS,
+                    ABS = createCarModel.ABS,
+                    ESP = createCarModel.ESP,
+                    Airbag = createCarModel.Airbag,
+                    TractionControl = createCarModel.TractionControl
                 };
 
                 await carService.CreateCarAsync(car);
@@ -196,22 +202,22 @@ namespace Jcars.Controllers
                 if (Request.Files["photo"].ContentLength != 0)
                 {
                     fileData = binaryReader.ReadBytes(Request.Files["photo"].ContentLength);
-                    await carService.CreateFileAsync(new Business.Entities.File {CarID=id ,Content=fileData});
-                }                
+                    await carService.CreateFileAsync(new Business.Entities.File { CarID = id, Content = fileData });
+                }
             }
             return RedirectToAction("Images", new { id = id });
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin, User")]
-        public async Task DeleteImage(int id,int carID)
+        public async Task DeleteImage(int id, int carID)
         {
             var car = await carService.GetCarAsync(carID);
             if (car.UserID != User.Identity.GetUserId())
             {
                 RedirectToAction("MyCars");//On Error
             }
-            else if(!car.Files.Select(f=>f.FileID).Contains(id))
+            else if (!car.Files.Select(f => f.FileID).Contains(id))
             {
                 RedirectToAction("MyCars");//On Error
             }
