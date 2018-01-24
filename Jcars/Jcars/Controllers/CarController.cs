@@ -22,9 +22,19 @@ namespace Jcars.Controllers
             this.carService = carService;
         }
         // GET: Car
-        public ActionResult Index()
+        public async Task<ActionResult> Index(int pageNum=1,int pageSize=5)
         {
-            return View();
+            if(pageSize>100 || pageSize <1)
+            {
+                pageSize = 5;
+            }
+            Tuple<IEnumerable<Car>, int> cars = await carService.GetPaginatedCarsAsync(pageNum,pageSize);
+            if (pageNum>cars.Item2)
+            {
+                return RedirectToAction("Index");
+            }
+            var result = new PaginatedCarsListModel(cars.Item1,cars.Item2,pageSize,pageNum);
+            return View(result);
         }
 
         [HttpGet]

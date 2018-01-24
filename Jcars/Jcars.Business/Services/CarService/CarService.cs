@@ -25,10 +25,12 @@ namespace Jcars.Business.Services.CarService
             await Context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Car>> GetPaginatedCarsAsync(int pageNumber, int pageSize)
+        public async Task<Tuple<IEnumerable<Car>,int>> GetPaginatedCarsAsync(int pageNumber, int pageSize)
         {
-            var result = await Context.Cars.Include("Files").Include("Brands").Include("Models")
-                .Include("Engines").Include("Transmissions").Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
+            var cars = await Context.Cars.Include("Files").Include("Brand").Include("Model")
+                .Include("Engine").Include("Transmission").OrderBy(c=>c.CarID).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
+            int pages = (Context.Cars.Count()%pageSize!=0)? Context.Cars.Count() / pageSize +1 : Context.Cars.Count() / pageSize;
+            Tuple<IEnumerable<Car>, int> result = new Tuple<IEnumerable<Car>, int>(cars, pages);
             return result;
         }
 

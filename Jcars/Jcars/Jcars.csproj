@@ -190,6 +190,7 @@
     <Compile Include="Models\EditCarModel.cs" />
     <Compile Include="Models\EditImagesModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
+    <Compile Include="Models\PaginatedCarsListModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
