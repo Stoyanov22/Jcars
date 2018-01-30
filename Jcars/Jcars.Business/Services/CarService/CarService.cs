@@ -25,11 +25,11 @@ namespace Jcars.Business.Services.CarService
             await Context.SaveChangesAsync();
         }
 
-        public async Task<Tuple<IEnumerable<Car>,int>> GetPaginatedCarsAsync(int pageNumber, int pageSize)
+        public async Task<Tuple<IEnumerable<Car>, int>> GetPaginatedCarsAsync(int pageNumber, int pageSize)
         {
             var cars = await Context.Cars.Include("Files").Include("Brand").Include("Model")
-                .Include("Engine").Include("Transmission").OrderBy(c=>c.CarID).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
-            int pages = (Context.Cars.Count()%pageSize!=0)? Context.Cars.Count() / pageSize +1 : Context.Cars.Count() / pageSize;
+                .Include("Engine").Include("Transmission").OrderBy(c => c.CarID).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
+            int pages = (Context.Cars.Count() % pageSize != 0) ? Context.Cars.Count() / pageSize + 1 : Context.Cars.Count() / pageSize;
             Tuple<IEnumerable<Car>, int> result = new Tuple<IEnumerable<Car>, int>(cars, pages);
             return result;
         }
@@ -113,6 +113,39 @@ namespace Jcars.Business.Services.CarService
             Context.Files.Remove(file);
             await Context.SaveChangesAsync();
 
+        }
+
+        public async Task<Tuple<IEnumerable<Car>, int>> GetPaginatedSearchedCarsAsync(SearchResult searchResult, int pageNumber, int pageSize)
+        {
+            int? maxYear = searchResult.MaxYear.HasValue ? searchResult.MaxYear : DateTime.Now.Year;
+            int? maxPrice = searchResult.MaxPrice.HasValue ? searchResult.MaxPrice : 10000000;
+            int? maxHorsepower = searchResult.MaxHorsepower.HasValue ? searchResult.MaxHorsepower : Int32.MaxValue;
+            int? maxMileage = searchResult.MaxMileage.HasValue ? searchResult.MaxMileage : Int32.MaxValue;
+            int? minYear = searchResult.MinYear.HasValue ? searchResult.MinYear : 1900;
+            int? minPrice = searchResult.MinPrice.HasValue ? searchResult.MinPrice : 0;
+            int? minHorsepower = searchResult.MinHorsepower.HasValue ? searchResult.MinHorsepower : 0;
+            int? minMileage = searchResult.MinMileage.HasValue ? searchResult.MinMileage : 0;
+
+            var cars = await Context.Cars.OrderBy(c => c.CarID).Where(c => c.BrandID == searchResult.BrandID || searchResult.BrandID == null)
+                .Where(c => c.ModelID == searchResult.ModelID || searchResult.ModelID == null)
+                .Where(c=> c.EngineID == searchResult.EngineID || searchResult.EngineID == null)
+                .Where(c=> c.TransmissionID == searchResult.TransmissionID || searchResult.TransmissionID == null)
+                .Where(c=> c.Price >= minPrice && c.Price <= maxPrice)
+                .Where(c=> c.Year >= minYear && c.Year <= maxYear)
+                .Where(c=> c.Horsepower >= minHorsepower && c.Horsepower <= maxHorsepower)
+                .Where(c=> c.Year >= minMileage && c.Year <= maxMileage)
+                .Where(c=> searchResult.ABS == true && c.ABS == true)
+                .Where(c=> searchResult.AirConditioner == true && c.AirConditioner == true)
+                .Where(c=> searchResult.Airbag == true && c.Airbag == true)
+                .Where(c=> searchResult.GPS == true && c.GPS == true)
+                .Where(c=> searchResult.ESP == true && c.ESP == true)
+                .Where(c=> searchResult.TractionControl == true && c.TractionControl == true)
+                .Include("Files").Include("Brand").Include("Model").Include("Engine").Include("Transmission")
+                .Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
+
+            int pages = (Context.Cars.Count() % pageSize != 0) ? Context.Cars.Count() / pageSize + 1 : Context.Cars.Count() / pageSize;
+            Tuple<IEnumerable<Car>, int> result = new Tuple<IEnumerable<Car>, int>(cars, pages);
+            return result;
         }
     }
 }

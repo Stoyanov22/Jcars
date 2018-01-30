@@ -22,18 +22,18 @@ namespace Jcars.Controllers
             this.carService = carService;
         }
         // GET: Car
-        public async Task<ActionResult> Index(int pageNum=1,int pageSize=5)
+        public async Task<ActionResult> Index(int pageNum = 1, int pageSize = 5)
         {
-            if(pageSize>100 || pageSize <1)
+            if (pageSize > 100 || pageSize < 1)
             {
                 pageSize = 5;
             }
-            Tuple<IEnumerable<Car>, int> cars = await carService.GetPaginatedCarsAsync(pageNum,pageSize);
-            if (pageNum>cars.Item2)
+            Tuple<IEnumerable<Car>, int> cars = await carService.GetPaginatedCarsAsync(pageNum, pageSize);
+            if (pageNum > cars.Item2)
             {
                 return RedirectToAction("Index");
             }
-            var result = new PaginatedCarsListModel(cars.Item1,cars.Item2,pageSize,pageNum);
+            var result = new PaginatedCarsListModel(cars.Item1, cars.Item2, pageSize, pageNum);
             return View(result);
         }
 
@@ -235,6 +235,28 @@ namespace Jcars.Controllers
             {
                 await carService.DeleteFileAsync(id);
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Search(SearchCarModel searchCarModel = null, int pageNum = 1, int pageSize = 10)
+        {
+            var seachResult = new SearchResult(searchCarModel.BrandID, searchCarModel.ModelID, searchCarModel.EngineID
+                , searchCarModel.TransmissionID, searchCarModel.MinPrice, searchCarModel.MaxPrice, searchCarModel.MinYear
+                , searchCarModel.MaxYear, searchCarModel.MinHorsepower, searchCarModel.MaxHorsepower, searchCarModel.MinMileage
+                , searchCarModel.MaxMileage, searchCarModel.AirConditioner, searchCarModel.GPS, searchCarModel.ABS
+                , searchCarModel.ESP, searchCarModel.Airbag, searchCarModel.TractionControl);
+
+            if (pageSize > 100 || pageSize < 1)
+            {
+                pageSize = 5;
+            }
+            Tuple<IEnumerable<Car>, int> cars = await carService.GetPaginatedSearchedCarsAsync(seachResult, pageNum, pageSize);
+            if (pageNum > cars.Item2)
+            {
+                return RedirectToAction("Index");
+            }
+            var result = new PaginatedCarsListModel(cars.Item1, cars.Item2, pageSize, pageNum);
+            return View(result);
         }
     }
 }

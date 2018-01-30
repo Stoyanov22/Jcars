@@ -21,5 +21,6 @@ namespace Jcars.Business.Services.CarService
         Task DeleteCarAsync(int id);
         Task CreateFileAsync(File file);
         Task DeleteFileAsync(int id);
+        Task<Tuple<IEnumerable<Car>, int>> GetPaginatedSearchedCarsAsync(SearchResult searchResult, int pageNumber, int pageSize);
     }
 }

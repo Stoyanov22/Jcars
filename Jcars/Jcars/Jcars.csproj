@@ -192,6 +192,7 @@
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\PaginatedCarsListModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SearchCarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +240,7 @@
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\Edit.cshtml" />
     <Content Include="Views\Car\Images.cshtml" />
+    <Content Include="Views\Car\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -106,6 +106,7 @@
     <Compile Include="Entities\IJcarsDbContext.cs" />
     <Compile Include="Entities\JcarsDbContext.cs" />
     <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\SearchResult.cs" />
     <Compile Include="Entities\Transmission.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

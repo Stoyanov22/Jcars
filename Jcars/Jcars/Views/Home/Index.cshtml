@@ -1,9 +1,127 @@
-﻿<div class="jumbotron">
+﻿@model Jcars.Models.SearchCarModel
+
+<div class="jumbotron">
     <h1>VILI E BOG</h1>
     <p class="lead">SAMO LOKO ALE</p>
 </div>
 
+
+
 @if (User.Identity.IsAuthenticated)
 {
     @Html.ActionLink("To my cars", "MyCars", "Car");
+}
+
+@using (Html.BeginForm("Search", "Car", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Search Car</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Brand</label>
+            @Html.DropDownList("BrandID", Model.Brands.Select(i => new SelectListItem()
+            {
+                Text = i.Name,
+                Value = i.BrandID.ToString()
+            }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Model</label>
+            @Html.DropDownList("ModelID", Model.Models.Select(i => new SelectListItem()
+            {
+                Text = i.Name,
+                Value = i.ModelID.ToString()
+            }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Engine</label>
+            @Html.DropDownList("EngineID", Model.Engines.Select(i => new SelectListItem()
+            {
+                Text = i.Type,
+                Value = i.EngineID.ToString()
+            }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Transmission</label>
+            @Html.DropDownList("TransmissionID", Model.Transmissions.Select(i => new SelectListItem()
+            {
+                Text = i.Type,
+                Value = i.TransmissionID.ToString()
+            }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinPrice, new { @type = "number" })
+            @Html.TextBoxFor(m => m.MaxPrice, new { @type = "number" })
+
+            @Html.ValidationMessageFor(model => model.MinPrice, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.MaxPrice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Year", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinYear, new { @type = "number" })
+            @Html.TextBoxFor(m => m.MaxYear, new { @type = "number" })
+
+            @Html.ValidationMessageFor(model => model.MinYear, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.MaxYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Horsepower", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinHorsepower, new { @type = "number" })
+            @Html.TextBoxFor(m => m.MaxHorsepower, new { @type = "number" })
+
+            @Html.ValidationMessageFor(model => model.MinHorsepower, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.MaxHorsepower, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+        <div class="form-group">
+            @Html.Label("Mileage", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.MaxMileage, new { @type = "number" })
+                @Html.TextBoxFor(m => m.MinMileage, new { @type = "number" })
+
+                @Html.ValidationMessageFor(model => model.MaxMileage, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.MinMileage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    <label>AirConditioner: </label>@Html.CheckBoxFor(m => m.AirConditioner)
+    <label>GPS: </label>@Html.CheckBoxFor(m => m.GPS)
+    <label>ABS: </label>@Html.CheckBoxFor(m => m.ABS)
+    <label>ESP: </label>@Html.CheckBoxFor(m => m.ESP)
+    <label>Airbag: </label>@Html.CheckBoxFor(m => m.Airbag)
+    <label>TractionControl: </label>@Html.CheckBoxFor(m => m.TractionControl)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
