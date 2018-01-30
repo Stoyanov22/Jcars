@@ -126,7 +126,8 @@ namespace Jcars.Business.Services.CarService
             int? minHorsepower = searchResult.MinHorsepower.HasValue ? searchResult.MinHorsepower : 0;
             int? minMileage = searchResult.MinMileage.HasValue ? searchResult.MinMileage : 0;
 
-            var cars = await Context.Cars.OrderBy(c => c.CarID).Where(c => c.BrandID == searchResult.BrandID || searchResult.BrandID == null)
+            var cars = await Context.Cars.OrderBy(c => c.CarID)
+                .Where(c => c.BrandID == searchResult.BrandID || searchResult.BrandID == null)
                 .Where(c => c.ModelID == searchResult.ModelID || searchResult.ModelID == null)
                 .Where(c=> c.EngineID == searchResult.EngineID || searchResult.EngineID == null)
                 .Where(c=> c.TransmissionID == searchResult.TransmissionID || searchResult.TransmissionID == null)
