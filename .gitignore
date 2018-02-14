@@ -6,3 +6,6 @@ Jcars/.vs/Jcars/v15/.suo
 Jcars/.vs/config/applicationhost.config
 *.cache
 *.cache
+/.vs/Jcars/v15
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite

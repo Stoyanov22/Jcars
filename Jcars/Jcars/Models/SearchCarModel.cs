@@ -9,6 +9,10 @@ namespace Jcars.Models
 {
     public class SearchCarModel
     {
+        public List<Car> Cars { get; set; }
+        public int Pages { get; set; }
+        public int PageSize { get; set; }
+        public int PageNumber { get; set; }
         public IEnumerable<Brand> Brands { get; set; }
         public IEnumerable<Model> Models { get; set; }
         public IEnumerable<Engine> Engines { get; set; }
@@ -46,7 +50,50 @@ namespace Jcars.Models
             Models = models;
             Engines = engines;
             Transmissions = transmission;
+        }
 
+        public SearchCarModel(IEnumerable<Car> cars, int pages, int pageSize, int pageNumber)
+        {
+            Cars = cars.ToList();
+            Pages = pages;
+            PageSize = pageSize;
+            PageNumber = pageNumber;
+        }
+
+        public SearchCarModel(IEnumerable<Car> cars, int pages, int pageSize, int pageNumber
+            , IEnumerable<Brand> brands, IEnumerable<Model> models
+            , IEnumerable<Engine> engines, IEnumerable<Transmission> transmission
+            , int? brandID, int? modelID, int? engineID, int? transmissionID
+            , int? minPrice, int? maxPrice, int? minYear, int? maxYear, int? minHorsepower
+            , int? maxHorsepower, int? minMileage, int? maxMileage, bool airConditioner
+            , bool gps, bool abs, bool esp, bool airbag, bool tractionControl)
+        {
+            Cars = cars.ToList();
+            Pages = pages;
+            PageSize = pageSize;
+            PageNumber = pageNumber;
+            Brands = brands;
+            Models = models;
+            Engines = engines;
+            Transmissions = transmission;
+            BrandID = brandID;
+            ModelID = modelID;
+            EngineID = engineID;
+            TransmissionID = transmissionID;
+            MinPrice = minPrice;
+            MinYear = minYear;
+            MinHorsepower = minHorsepower;
+            MinMileage = minMileage;
+            MaxPrice = maxPrice;
+            MaxYear = maxYear;
+            MaxHorsepower = maxHorsepower;
+            MaxMileage = maxMileage;
+            AirConditioner = airConditioner;
+            GPS = gps;
+            ABS = abs;
+            ESP = esp;
+            Airbag = airbag;
+            TractionControl = tractionControl;
         }
     }
 }
