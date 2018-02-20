@@ -19,13 +19,7 @@ namespace Jcars.Controllers
             this.carService = carService;
         }
         public async Task<ActionResult> Index(SearchCarModel searchCarModel = null, int pageNum = 1, int pageSize = 10)
-        {
-            if(searchCarModel == null)
-            {
-                return View(new SearchCarModel(await carService.GetAllBrandsAsync(), await carService.GetAllModelsAsync()
-                , await carService.GetAllEnginesAsync(), await carService.GetAllTransmissionsAsync()));
-            }
-
+         {
             var seachResult = new SearchResult(searchCarModel.BrandID, searchCarModel.ModelID, searchCarModel.EngineID
                 , searchCarModel.TransmissionID, searchCarModel.MinPrice, searchCarModel.MaxPrice, searchCarModel.MinYear
                 , searchCarModel.MaxYear, searchCarModel.MinHorsepower, searchCarModel.MaxHorsepower, searchCarModel.MinMileage

@@ -13,7 +13,7 @@
     @Html.ActionLink("To my cars", "MyCars", "Car");
 }
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "Home", FormMethod.Get, @*new { enctype = "multipart/form-data" },*@ new { @class = "criteriaForm" }))
 {
     @Html.AntiForgeryToken()
 
@@ -192,7 +192,9 @@
 
 @for (int i = 1; i <= Model.Pages; i++)
 {
-
-    @Html.ActionLink(i + " ", "Index", "Home", new { pageNum = i }, null)
+    <input type="submit" value="@i " class="page" data-pageNum="@i" class="btn btn-default" />
+    @*@Html.(i + " ", "Index", "Home", new { pageNum = i }, new { @class = "page" })*@
 
 }
+
+<script type="text/javascript" src="~/Scripts/submitForm.js"></script>
