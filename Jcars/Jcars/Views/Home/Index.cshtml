@@ -118,6 +118,11 @@
         <label>ESP: </label>@Html.CheckBoxFor(m => m.ESP)
         <label>Airbag: </label>@Html.CheckBoxFor(m => m.Airbag)
         <label>TractionControl: </label>@Html.CheckBoxFor(m => m.TractionControl)
+        <br />
+        @*@Html.DropDownListFor(m => m.PageSize, new SelectList(new Dictionary<string, int> { { "3", 3 }, { "5", 5 }, { "10", 10 }, { "25", 25 }, { "50", 50 } }, "Key", "Value", Model.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist" })*@
+        <label>Car by page : </label>@Html.TextBoxFor(m => m.PageSize)
+
+        @Html.TextBoxFor(m=>m.PageNumber, new { @class = "pageNumProperty hidden" })
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -128,8 +133,6 @@
 }
 
 <h2>Search</h2>
-
-<h1>Br we ti uspq da tursish we</h1>
 
 <table>
     <tr>
@@ -192,7 +195,7 @@
 
 @for (int i = 1; i <= Model.Pages; i++)
 {
-    <input type="submit" value="@i " class="page" data-pageNum="@i" class="btn btn-default" />
+    <input type="submit" value="@i " class="page btn btn-default" data-pageNum="@i" data-pageSize="@Model.PageSize" />
     @*@Html.(i + " ", "Index", "Home", new { pageNum = i }, new { @class = "page" })*@
 
 }

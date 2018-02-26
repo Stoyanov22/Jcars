@@ -136,7 +136,7 @@ namespace Jcars.Business.Services.CarService
                 .Where(c=> c.Horsepower >= minHorsepower && c.Horsepower <= maxHorsepower)
                 .Where(c=> c.Year >= minMileage && c.Year <= maxMileage)
                 .Include("Files").Include("Brand").Include("Model").Include("Engine").Include("Transmission")
-                .Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync();
+                .ToListAsync();
 
             if(searchResult.ABS)
             {
@@ -167,15 +167,10 @@ namespace Jcars.Business.Services.CarService
             {
                 cars.Where(c => c.ABS == true);
             }
-            //.Where(c=> searchResult.ABS == true && c.ABS == true)
-            //.Where(c=> searchResult.AirConditioner == true && c.AirConditioner == true)
-            //.Where(c=> searchResult.Airbag == true && c.Airbag == true)
-            //.Where(c=> searchResult.GPS == true && c.GPS == true)
-            //.Where(c=> searchResult.ESP == true && c.ESP == true)
-            //.Where(c=> searchResult.TractionControl == true && c.TractionControl == true)
 
-            int pages = (Context.Cars.Count() % pageSize != 0) ? Context.Cars.Count() / pageSize + 1 : Context.Cars.Count() / pageSize;
-            Tuple<IEnumerable<Car>, int> result = new Tuple<IEnumerable<Car>, int>(cars, pages);
+            int pages = (cars.Count() % pageSize != 0) ? cars.Count() / pageSize + 1 : cars.Count() / pageSize;
+            var carsResult = cars.OrderBy(c=> c.CarID).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            Tuple <IEnumerable<Car>, int> result = new Tuple<IEnumerable<Car>, int>(carsResult, pages);
             return result;
         }
     }

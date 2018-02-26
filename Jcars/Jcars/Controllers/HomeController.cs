@@ -19,7 +19,7 @@ namespace Jcars.Controllers
             this.carService = carService;
         }
         public async Task<ActionResult> Index(SearchCarModel searchCarModel = null, int pageNum = 1, int pageSize = 10)
-         {
+        {
             var seachResult = new SearchResult(searchCarModel.BrandID, searchCarModel.ModelID, searchCarModel.EngineID
                 , searchCarModel.TransmissionID, searchCarModel.MinPrice, searchCarModel.MaxPrice, searchCarModel.MinYear
                 , searchCarModel.MaxYear, searchCarModel.MinHorsepower, searchCarModel.MaxHorsepower, searchCarModel.MinMileage
@@ -30,7 +30,10 @@ namespace Jcars.Controllers
             {
                 pageSize = 5;
             }
-            Tuple<IEnumerable<Car>, int> cars = await carService.GetPaginatedSearchedCarsAsync(seachResult, pageNum, pageSize);
+
+            Tuple<IEnumerable<Car>, int> cars = (searchCarModel.PageNumber != 0)?
+                await carService.GetPaginatedSearchedCarsAsync(seachResult, searchCarModel.PageNumber, pageSize):
+                await carService.GetPaginatedSearchedCarsAsync(seachResult, pageNum, pageSize);
             if (pageNum > cars.Item2)
             {
                 return RedirectToAction("Index");
